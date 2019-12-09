@@ -9,3 +9,10 @@
 
 Because sometimes you just need a quick reminder of that incantation to
 get things done.
+
+This is a cheetsheat for RStudio Team system administration.
+
+View the deployed version at
+<https://colorado.rstudio.com/rsc/rstudio-team-sysadmin-cheatsheet/>
+
+![](thumbnail.png)
