@@ -3,21 +3,11 @@ title: "RStudio Team system admin cheat sheet"
 author: "Andrie de Vries"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document
 css: styles.css
 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-
-library(readr, quietly = TRUE)
-library(dplyr, quietly = TRUE)
-library(glue)
-mute_na <- function(x){
-  if_else(is.na(x), "", x)
-}
-```
 
 ## Cheat sheet  {.tabset}
 
@@ -68,21 +58,235 @@ Verify installation:
 
 Admin guide: https://docs.rstudio.com/ide/server-pro/
 
+#### Starting, stopping and restarting
+
+Running the verify installation command:
+
+```sh
+sudo rstudio-server stop
+sudo rstudio-server verify-installation
+sudo rstudio-server start
+```
+
+To restart the RSP service and check its status, run these commands (with `sudo` if necessary):
+
+```sh
+sudo rstudio-server restart
+sudo rstudio-server status
+```
+
+#### Status
+
+```sh
+rstudio-server status
+```
+
+
+#### Error logs
+
+The locations of the various server log files:
+
+```sh
+ls /var/log/rstudio-server
+```
+
+```sh
+cat /var/log/rstudio-server/rserver-http-error.log
+```
+
+The server log is at:
+
+```sh
+tail /var/lib/rstudio-server/monitor/log/rstudio-server.log
+```
+
 
 ### RStudio Connect 
 
 Admin guide: https://docs.rstudio.com/connect/admin/
 
+#### Config file
+
+```sh
+/etc/rstudio-connect/rstudio-connect.gcfg
+```
+
+#### Systemd vs upstart
+
+Distributions using systemd include Red Hat/CentOS 7, Red Hat/CentOS 8, SUSE 12, Ubuntu 16.04, and Ubuntu 18.04.
+
+* `systemctl start rstudio-connect`
+
+
+Distributions using Upstart include Red Hat/CentOS 6 and Ubuntu 14.04.
+
+* `start rstudio-connect`
+
+#### Starting and stopping
+
+```sh
+sudo systemctl start rstudio-connect
+sudo systemctl stop rstudio-connect
+sudo systemctl restart rstudio-connect
+sudo systemctl reload rstudio-connect
+```
+
+#### Checking status
+
+```sh
+sudo systemctl status rstudio-connect
+```
+
+
+#### Log files
+
+```sh
+sudo tail /var/log/rstudio-connect.log
+```
+
+
+#### Get the diagnostics script
+
+```sh
+/opt/rstudio-connect/scripts/run-diagnostics.sh
+```
+
 ### RStudio Package Manager 
 
 Admin guide: https://docs.rstudio.com/rspm/admin/
+
+```sh
+sudo systemctl status rstudio-pm
+```
+
+Try running the `rspm` command on the server instance where RSPM is installed:
+
+```sh
+/opt/rstudio-pm/bin/rspm
+```
+
+To save keystrokes when typing RSPM commands, create a command alias for the
+`rspm` command:
+
+```sh
+echo "alias rspm='/opt/rstudio-pm/bin/rspm'" >> ~/.bashrc
+```
+
+If you run the `rspm` command with no arguments, then you'll see a list of
+available commands:
+
+```sh
+$ rspm
+Available Commands:
+add         Command to add packages to sources
+air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
+archive     Command to archive packages in sources
+clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
+create      Commands to create entities
+delete      Commands to delete entities
+edit        Commands to edit repo name and description
+fetch       Command to initiate eager package fetching
+help        Help about any command
+import      Command to import SSH keys
+info        Command to print information about sources and repos
+list        Commands to list entities.
+logs        Command to retrieve logs for package builds
+remove      Command to remove packages from sources
+reorder     Command to reorder repo subscriptions to sources
+rerun       Command to rerun git-builders
+run         Command to run git-builders
+subscribe   Command to subscribe repos to sources
+sync        Command to initiate an ad-hoc sync of the default cran source
+unsubscribe Command to unsubscribe repos from sources
+update      Command to update curated-cran sources
+```
+
+
+#### Working with CRAN
+
+```sh
+sync        Command to initiate an ad-hoc sync of the default cran source
+clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
+```
+
+#### Manage repositories and sources
+
+```sh
+create      Commands to create entities
+delete      Commands to delete entities
+list        Commands to list entities
+update      Command to update curated-cran sources
+```
+
+#### Manage packages
+
+```sh
+add         Command to add packages to sources
+archive     Command to archive packages in sources
+remove      Command to remove packages from sources
+```
+
+#### Working with repositories
+
+```sh
+edit        Commands to edit repo name and description
+reorder     Command to reorder repo subscriptions to sources
+subscribe   Command to subscribe repos to sources
+unsubscribe Command to unsubscribe repos from sources
+```
+
+#### Utilities
+
+```sh
+air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
+fetch       Command to initiate eager package fetching
+help        Help about any command
+import      Command to import SSH keys
+info        Command to print information about sources and repos
+logs        Command to retrieve logs for package builds
+```
+
+
 
 
 ### Pro Drivers 
 
 Documentation overview: https://docs.rstudio.com/pro-drivers/
 
+Driver locations:
+
+```sh
+cat /etc/odbc.ini 
+cat /etc/odbcinst.ini
+```
+
+
+
+### Troubleshooting
+
+
 
 ### General Linux tips 
+
+#### OS version
+
+What OS are you using?
+
+```sh
+cat /etc/*-release
+```
+
+or
+
+```sh
+uname -a
+```
+
+#### Export environment variable to PATH
+
+```sh
+export PATH=$PATH:/opt/R/3.5.0/bin
+```
+
 
 

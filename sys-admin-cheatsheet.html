@@ -437,21 +437,157 @@ sudo gdebi r-${R_VERSION}_1_amd64.deb</code></pre>
 <div id="rstudio-server-pro" class="section level3">
 <h3>RStudio Server Pro</h3>
 <p>Admin guide: <a href="https://docs.rstudio.com/ide/server-pro/" class="uri">https://docs.rstudio.com/ide/server-pro/</a></p>
+<div id="starting-stopping-and-restarting" class="section level4">
+<h4>Starting, stopping and restarting</h4>
+<p>Running the verify installation command:</p>
+<pre class="sh"><code>sudo rstudio-server stop
+sudo rstudio-server verify-installation
+sudo rstudio-server start</code></pre>
+<p>To restart the RSP service and check its status, run these commands (with <code>sudo</code> if necessary):</p>
+<pre class="sh"><code>sudo rstudio-server restart
+sudo rstudio-server status</code></pre>
+</div>
+<div id="status" class="section level4">
+<h4>Status</h4>
+<pre class="sh"><code>rstudio-server status</code></pre>
+</div>
+<div id="error-logs" class="section level4">
+<h4>Error logs</h4>
+<p>The locations of the various server log files:</p>
+<pre class="sh"><code>ls /var/log/rstudio-server</code></pre>
+<pre class="sh"><code>cat /var/log/rstudio-server/rserver-http-error.log</code></pre>
+<p>The server log is at:</p>
+<pre class="sh"><code>tail /var/lib/rstudio-server/monitor/log/rstudio-server.log</code></pre>
+</div>
 </div>
 <div id="rstudio-connect" class="section level3">
 <h3>RStudio Connect</h3>
 <p>Admin guide: <a href="https://docs.rstudio.com/connect/admin/" class="uri">https://docs.rstudio.com/connect/admin/</a></p>
+<div id="config-file" class="section level4">
+<h4>Config file</h4>
+<pre class="sh"><code>/etc/rstudio-connect/rstudio-connect.gcfg</code></pre>
+</div>
+<div id="systemd-vs-upstart" class="section level4">
+<h4>Systemd vs upstart</h4>
+<p>Distributions using systemd include Red Hat/CentOS 7, Red Hat/CentOS 8, SUSE 12, Ubuntu 16.04, and Ubuntu 18.04.</p>
+<ul>
+<li><code>systemctl start rstudio-connect</code></li>
+</ul>
+<p>Distributions using Upstart include Red Hat/CentOS 6 and Ubuntu 14.04.</p>
+<ul>
+<li><code>start rstudio-connect</code></li>
+</ul>
+</div>
+<div id="starting-and-stopping" class="section level4">
+<h4>Starting and stopping</h4>
+<pre class="sh"><code>sudo systemctl start rstudio-connect
+sudo systemctl stop rstudio-connect
+sudo systemctl restart rstudio-connect
+sudo systemctl reload rstudio-connect</code></pre>
+</div>
+<div id="checking-status" class="section level4">
+<h4>Checking status</h4>
+<pre class="sh"><code>sudo systemctl status rstudio-connect</code></pre>
+</div>
+<div id="log-files" class="section level4">
+<h4>Log files</h4>
+<pre class="sh"><code>sudo tail /var/log/rstudio-connect.log</code></pre>
+</div>
+<div id="get-the-diagnostics-script" class="section level4">
+<h4>Get the diagnostics script</h4>
+<pre class="sh"><code>/opt/rstudio-connect/scripts/run-diagnostics.sh</code></pre>
+</div>
 </div>
 <div id="rstudio-package-manager" class="section level3">
 <h3>RStudio Package Manager</h3>
 <p>Admin guide: <a href="https://docs.rstudio.com/rspm/admin/" class="uri">https://docs.rstudio.com/rspm/admin/</a></p>
+<pre class="sh"><code>sudo systemctl status rstudio-pm</code></pre>
+<p>Try running the <code>rspm</code> command on the server instance where RSPM is installed:</p>
+<pre class="sh"><code>/opt/rstudio-pm/bin/rspm</code></pre>
+<p>To save keystrokes when typing RSPM commands, create a command alias for the <code>rspm</code> command:</p>
+<pre class="sh"><code>echo &quot;alias rspm=&#39;/opt/rstudio-pm/bin/rspm&#39;&quot; &gt;&gt; ~/.bashrc</code></pre>
+<p>If you run the <code>rspm</code> command with no arguments, then you’ll see a list of available commands:</p>
+<pre class="sh"><code>$ rspm
+Available Commands:
+add         Command to add packages to sources
+air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
+archive     Command to archive packages in sources
+clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
+create      Commands to create entities
+delete      Commands to delete entities
+edit        Commands to edit repo name and description
+fetch       Command to initiate eager package fetching
+help        Help about any command
+import      Command to import SSH keys
+info        Command to print information about sources and repos
+list        Commands to list entities.
+logs        Command to retrieve logs for package builds
+remove      Command to remove packages from sources
+reorder     Command to reorder repo subscriptions to sources
+rerun       Command to rerun git-builders
+run         Command to run git-builders
+subscribe   Command to subscribe repos to sources
+sync        Command to initiate an ad-hoc sync of the default cran source
+unsubscribe Command to unsubscribe repos from sources
+update      Command to update curated-cran sources</code></pre>
+<div id="working-with-cran" class="section level4">
+<h4>Working with CRAN</h4>
+<pre class="sh"><code>sync        Command to initiate an ad-hoc sync of the default cran source
+clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.</code></pre>
+</div>
+<div id="manage-repositories-and-sources" class="section level4">
+<h4>Manage repositories and sources</h4>
+<pre class="sh"><code>create      Commands to create entities
+delete      Commands to delete entities
+list        Commands to list entities
+update      Command to update curated-cran sources</code></pre>
+</div>
+<div id="manage-packages" class="section level4">
+<h4>Manage packages</h4>
+<pre class="sh"><code>add         Command to add packages to sources
+archive     Command to archive packages in sources
+remove      Command to remove packages from sources</code></pre>
+</div>
+<div id="working-with-repositories" class="section level4">
+<h4>Working with repositories</h4>
+<pre class="sh"><code>edit        Commands to edit repo name and description
+reorder     Command to reorder repo subscriptions to sources
+subscribe   Command to subscribe repos to sources
+unsubscribe Command to unsubscribe repos from sources</code></pre>
+</div>
+<div id="utilities" class="section level4">
+<h4>Utilities</h4>
+<pre class="sh"><code>air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
+fetch       Command to initiate eager package fetching
+help        Help about any command
+import      Command to import SSH keys
+info        Command to print information about sources and repos
+logs        Command to retrieve logs for package builds</code></pre>
+</div>
 </div>
 <div id="pro-drivers" class="section level3">
 <h3>Pro Drivers</h3>
 <p>Documentation overview: <a href="https://docs.rstudio.com/pro-drivers/" class="uri">https://docs.rstudio.com/pro-drivers/</a></p>
+<p>Driver locations:</p>
+<pre class="sh"><code>cat /etc/odbc.ini 
+cat /etc/odbcinst.ini</code></pre>
+</div>
+<div id="troubleshooting" class="section level3">
+<h3>Troubleshooting</h3>
 </div>
 <div id="general-linux-tips" class="section level3">
 <h3>General Linux tips</h3>
+<div id="os-version" class="section level4">
+<h4>OS version</h4>
+<p>What OS are you using?</p>
+<pre class="sh"><code>cat /etc/*-release</code></pre>
+<p>or</p>
+<pre class="sh"><code>uname -a</code></pre>
+</div>
+<div id="export-environment-variable-to-path" class="section level4">
+<h4>Export environment variable to PATH</h4>
+<pre class="sh"><code>export PATH=$PATH:/opt/R/3.5.0/bin</code></pre>
+</div>
 </div>
 </div>
 
