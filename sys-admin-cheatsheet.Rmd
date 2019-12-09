@@ -3,15 +3,17 @@ title: "RStudio Team System Admin :: <b>CHEATSHEET</b>"
 author: "Andrie de Vries"
 date: "`r Sys.Date()`"
 output:
-  html_document
+  html_document:
+    toc: true
+    toc_collapse: true
+    toc_float: true
+    toc_depth: 4
 css: styles.css
 
 ---
 
 
-## Cheatsheet {.tabset}
-
-### Documentation 
+## Documentation
 
 Topic                               | Link
 :----                               | :-------------
@@ -24,9 +26,9 @@ RStudio Package Manager admin guide | https://docs.rstudio.com/rspm/admin/
 Pro Drivers                         | https://docs.rstudio.com/pro-drivers/
 
 
-### Installing R
+## Installing R
 
-#### Install R from pre-compiled binaries
+### Install R from pre-compiled binaries
 
 Recommended best practise is to install R from pre-compiled binaries
 
@@ -54,11 +56,11 @@ Verify installation:
 ```
 
 
-### RStudio Server Pro
+## RStudio Server Pro
 
 Admin guide: https://docs.rstudio.com/ide/server-pro/
 
-#### Starting, stopping and restarting
+### Starting, stopping and restarting
 
 Running the verify installation command:
 
@@ -75,14 +77,14 @@ sudo rstudio-server restart
 sudo rstudio-server status
 ```
 
-#### Status
+### Status
 
 ```sh
 rstudio-server status
 ```
 
 
-#### Error logs
+### Error logs
 
 The locations of the various server log files:
 
@@ -101,17 +103,17 @@ tail /var/lib/rstudio-server/monitor/log/rstudio-server.log
 ```
 
 
-### RStudio Connect 
+## RStudio Connect 
 
 Admin guide: https://docs.rstudio.com/connect/admin/
 
-#### Config file
+### Config file
 
 ```sh
 /etc/rstudio-connect/rstudio-connect.gcfg
 ```
 
-#### Systemd vs upstart
+### Systemd vs upstart
 
 Distributions using systemd include Red Hat/CentOS 7, Red Hat/CentOS 8, SUSE 12, Ubuntu 16.04, and Ubuntu 18.04.
 
@@ -122,7 +124,7 @@ Distributions using Upstart include Red Hat/CentOS 6 and Ubuntu 14.04.
 
 * `start rstudio-connect`
 
-#### Starting and stopping
+### Starting and stopping
 
 ```sh
 sudo systemctl start rstudio-connect
@@ -131,27 +133,27 @@ sudo systemctl restart rstudio-connect
 sudo systemctl reload rstudio-connect
 ```
 
-#### Checking status
+### Checking status
 
 ```sh
 sudo systemctl status rstudio-connect
 ```
 
 
-#### Log files
+### Log files
 
 ```sh
 sudo tail /var/log/rstudio-connect.log
 ```
 
 
-#### Get the diagnostics script
+### Get the diagnostics script
 
 ```sh
 /opt/rstudio-connect/scripts/run-diagnostics.sh
 ```
 
-### RStudio Package Manager 
+## RStudio Package Manager 
 
 Admin guide: https://docs.rstudio.com/rspm/admin/
 
@@ -202,14 +204,14 @@ update      Command to update curated-cran sources
 ```
 
 
-#### Working with CRAN
+### Working with CRAN
 
 ```sh
 sync        Command to initiate an ad-hoc sync of the default cran source
 clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
 ```
 
-#### Manage repositories and sources
+### Manage repositories and sources
 
 ```sh
 create      Commands to create entities
@@ -218,7 +220,7 @@ list        Commands to list entities
 update      Command to update curated-cran sources
 ```
 
-#### Manage packages
+### Manage packages
 
 ```sh
 add         Command to add packages to sources
@@ -226,7 +228,7 @@ archive     Command to archive packages in sources
 remove      Command to remove packages from sources
 ```
 
-#### Working with repositories
+### Working with repositories
 
 ```sh
 edit        Commands to edit repo name and description
@@ -235,7 +237,7 @@ subscribe   Command to subscribe repos to sources
 unsubscribe Command to unsubscribe repos from sources
 ```
 
-#### Utilities
+### Utilities
 
 ```sh
 air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
@@ -247,7 +249,7 @@ logs        Command to retrieve logs for package builds
 ```
 
 
-#### System health check
+### System health check
 
 You have various methods to check the health of your RSPM instance:
 
@@ -281,9 +283,9 @@ You have various methods to check the health of your RSPM instance:
      cat rspm_diagnostics-report.txt
      ```
 
-### License manager
+## License manager
 
-#### View license status:
+### View license status:
 
 ```sh
 sudo /opt/rstudio-pm/bin/license-manager status
@@ -308,7 +310,7 @@ activate-offline, activate-offline-request, begin-evaluation-offline,
 ```
 
 
-#### Expired license
+### Expired license
 
 - Things to try:
   - Check time and time zone  `timedatectl`
@@ -319,7 +321,7 @@ activate-offline, activate-offline-request, begin-evaluation-offline,
 
 
 
-### Pro Drivers 
+## Pro Drivers 
 
 Documentation overview: https://docs.rstudio.com/pro-drivers/
 
@@ -332,9 +334,9 @@ cat /etc/odbcinst.ini
 
 
 
-### Troubleshooting
+## Troubleshooting
 
-#### Troubleshooting R
+### Troubleshooting R
 
 - Almost all RStudio products depend on R being installed successfully to run.
   - Look for errors related to R in the server logs
@@ -370,7 +372,7 @@ locate libR.so
 ```
 
 
-#### Troubleshooting configuration
+### Troubleshooting configuration
 
 Look for any errors in the startup.  
   * You can view the live log during startup using
@@ -383,7 +385,7 @@ Read through the admin guides and make sure you have the correct formatting
 
 Make sure you're on the right version of the product compared to the admin guide!
 
-#### Troubleshooting authentication
+### Troubleshooting authentication
 
 * Difficult for RStudio Support to troubleshoot as it depends on external configuration values unknown to us.
 
@@ -406,9 +408,9 @@ Make sure you're on the right version of the product compared to the admin guide
   * Kerberos, Active Directory, etc.
 
 
-### General Linux tips 
+## General Linux tips 
 
-#### OS version
+### OS version
 
 What OS are you using?
 
@@ -422,7 +424,7 @@ or
 uname -a
 ```
 
-#### Export environment variable to PATH
+### Export environment variable to PATH
 
 ```sh
 export PATH=$PATH:/opt/R/3.5.0/bin
