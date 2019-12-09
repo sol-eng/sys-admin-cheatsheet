@@ -4,7 +4,7 @@
   "platform": "3.6.1",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "README.Rmd",
+    "primary_rmd": "sys-admin-cheatsheet.Rmd",
     "primary_html": null,
     "content_category": null,
     "has_parameters": false
