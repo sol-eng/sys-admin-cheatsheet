@@ -521,10 +521,22 @@
       "checksum": "4a749872a0fe7a97fc129fb2994bffd1"
     },
     "background.png": {
-      "checksum": "59183728f1771c6e566243eeef1e865c"
+      "checksum": "18e8c58e53e8aafb9ad52d805bbef602"
     },
     "background.svg": {
-      "checksum": "6a69eeb23b4de638824e975bf79ee701"
+      "checksum": "0427dac246768ff0237f8d677c358198"
+    },
+    "bar-graded-h2.png": {
+      "checksum": "b0b0c1aa2d622d4702af18c30af38b16"
+    },
+    "bar-graded-h2.svg": {
+      "checksum": "e04c0e17100ea6057ed45976d5d4065a"
+    },
+    "bar-graded-h3.png": {
+      "checksum": "9681fdca7d6e4334c9bb63f53e2d8964"
+    },
+    "bar-graded-h3.svg": {
+      "checksum": "0e9d22a4ca7d58ba252e991550802fef"
     },
     "LICENSE": {
       "checksum": "5181e9f31080af3a52e4b744a086d705"
@@ -596,13 +608,13 @@
       "checksum": "9507c9a529c284370423d919c5f2d1f1"
     },
     "styles.css": {
-      "checksum": "82fbb3533d6c1318ba5dd65a46fd0c0a"
+      "checksum": "13b207cb1fe7be4996ee9024197acf9e"
     },
     "sys-admin-cheatsheet.html": {
-      "checksum": "16f016ad3a0cf0d8d0816d93debb8886"
+      "checksum": "a3763b31538ad5d04df7079782294b87"
     },
     "sys-admin-cheatsheet.Rmd": {
-      "checksum": "7cfe8b99ab085e203272779eb5b09c3f"
+      "checksum": "5f8ea6b69779ec536f4af7e8428330f7"
     }
   },
   "users": null
