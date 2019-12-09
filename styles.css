@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600");
 
-body { 
+body {
   background: url(./background.png) no-repeat top right; 
 }
 
@@ -11,4 +11,27 @@ p {
 
 h1 {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h3 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+div .level2 {
+  margin-top: 80px;
+  background: url(./bar-graded-h2.png) no-repeat top right; 
+}
+
+div .level3 {
+  background: url(./bar-graded-h3.png) no-repeat top right; 
 }
