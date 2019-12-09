@@ -1,0 +1,88 @@
+---
+title: "RStudio Team system admin cheat sheet"
+author: "Andrie de Vries"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+css: styles.css
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(readr, quietly = TRUE)
+library(dplyr, quietly = TRUE)
+library(glue)
+mute_na <- function(x){
+  if_else(is.na(x), "", x)
+}
+```
+
+## Cheat sheet  {.tabset}
+
+### Documentation 
+
+Topic                               | Link
+:----                               | :-------------
+General                             | https://docs.rstudio.com/
+Installing R                        | https://docs.rstudio.com/resources/install-r/
+Installing Python                   | https://docs.rstudio.com/resources/install-python/
+RStudio Server admin guide          | https://docs.rstudio.com/ide/server-pro/
+RStudio Connect admin guide         | https://docs.rstudio.com/connect/admin/
+RStudio Package Manager admin guide | https://docs.rstudio.com/rspm/admin/
+Pro Drivers                         | https://docs.rstudio.com/pro-drivers/
+
+
+### Installing R
+
+#### Install R from pre-compiled binaries
+
+Recommended best practise is to install R from pre-compiled binaries
+
+https://docs.rstudio.com/resources/install-r/
+
+For example, on Ubuntu 18.04 for R version 3.6.1.
+
+```sh
+sudo sed -i.bak "/^#.*deb-src.*universe$/s/^# //g" /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install gdebi-core
+
+export R_VERSION=3.6.1
+
+curl -O https://cdn.rstudio.com/r/ubuntu-1804/pkgs/r-${R_VERSION}_1_amd64.deb
+sudo gdebi r-${R_VERSION}_1_amd64.deb
+```
+
+This script installs into `/opt/R/...`
+
+Verify installation:
+
+```sh
+/opt/R/${R_VERSION}/bin/R --version
+```
+
+
+### RStudio Server Pro
+
+Admin guide: https://docs.rstudio.com/ide/server-pro/
+
+
+### RStudio Connect 
+
+Admin guide: https://docs.rstudio.com/connect/admin/
+
+### RStudio Package Manager 
+
+Admin guide: https://docs.rstudio.com/rspm/admin/
+
+
+### Pro Drivers 
+
+Documentation overview: https://docs.rstudio.com/pro-drivers/
+
+
+### General Linux tips 
+
+
