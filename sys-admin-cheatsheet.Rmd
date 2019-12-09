@@ -9,7 +9,7 @@ css: styles.css
 ---
 
 
-## Cheatsheet  {.tabset}
+## Cheatsheet {.tabset}
 
 ### Documentation 
 
@@ -281,6 +281,42 @@ You have various methods to check the health of your RSPM instance:
      cat rspm_diagnostics-report.txt
      ```
 
+### License manager
+
+#### View license status:
+
+```sh
+sudo /opt/rstudio-pm/bin/license-manager status
+```
+
+Activate license:
+
+```sh
+sudo /opt/rstudio-pm/bin/license-manager activate LICENSE_KEY
+```
+
+List of available commands:
+
+```sh
+sudo /opt/rstudio-pm/bin/license-manager
+```
+
+```sh
+Supported commands: acquire-lease, acquire-lease-verbose, activate,
+activate-offline, activate-offline-request, begin-evaluation-offline,
+...
+```
+
+
+#### Expired license
+
+- Things to try:
+  - Check time and time zone  `timedatectl`
+  - Resync if needed, e.g. `sudo hwclock -w`
+  - Restart
+    
+- Deactivation tool: http://apps.rstudio.com/deactivate-license/
+
 
 
 ### Pro Drivers 
@@ -298,6 +334,76 @@ cat /etc/odbcinst.ini
 
 ### Troubleshooting
 
+#### Troubleshooting R
+
+- Almost all RStudio products depend on R being installed successfully to run.
+  - Look for errors related to R in the server logs
+  
+- Can R be launched manually and can the user's code be run in R without any errors?
+- How was R installed? 
+    - From source or [pre-compiled binaries](https://docs.rstudio.com/resources/install-r/)? If so, were all correct flags and capabilities set?  
+
+    ```sh
+    grep configure R_HOME/etc/Makeconf
+    ```
+    
+Are all necessary dependencies installed? 
+
+
+```sh
+apt-get build-dep r-base
+yum-builddep R
+```
+
+Are the permissions set correctly to allow `r-x` by all?      
+
+```sh
+namei -l /path/to/R
+```
+
+Are there multiple versions of R on the system?
+
+```sh
+apt-get install mlocate
+updatedb
+locate libR.so
+```
+
+
+#### Troubleshooting configuration
+
+Look for any errors in the startup.  
+  * You can view the live log during startup using
+  
+  ```sh
+  tail -f /path/to/log
+  ```
+
+Read through the admin guides and make sure you have the correct formatting
+
+Make sure you're on the right version of the product compared to the admin guide!
+
+#### Troubleshooting authentication
+
+* Difficult for RStudio Support to troubleshoot as it depends on external configuration values unknown to us.
+
+* Does it work outside of the RStudio product?
+
+  * Often possible to copy over working setup from other systems or services.
+  * For RStudio Server Pro
+  
+     * `pamtester` utility lets you test outside RStudio systems.
+  
+        ```sh
+        sudo /usr/lib/rstudio-server/bin/pamtester \
+        --verbose rstudio <username> authenticate
+        ```
+  
+* Check server log files including `access.log` files.
+
+* Check connections to any external authentication providers
+
+  * Kerberos, Active Directory, etc.
 
 
 ### General Linux tips 
