@@ -1,3 +1,7 @@
+body { 
+  background: url(./background.png) no-repeat top right; 
+}
+
 p {
     margin: 10px 0 5px;
 }
