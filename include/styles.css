@@ -2,11 +2,11 @@
 
 body {
   background: url(./background.png) no-repeat top right; 
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 p {
     margin: 10px 0 5px;
-    font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
