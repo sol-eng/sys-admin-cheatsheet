@@ -520,23 +520,26 @@
     ".Rbuildignore": {
       "checksum": "4a749872a0fe7a97fc129fb2994bffd1"
     },
-    "background.png": {
+    "include/background.png": {
       "checksum": "18e8c58e53e8aafb9ad52d805bbef602"
     },
-    "background.svg": {
+    "include/background.svg": {
       "checksum": "0427dac246768ff0237f8d677c358198"
     },
-    "bar-graded-h2.png": {
+    "include/bar-graded-h2.png": {
       "checksum": "b0b0c1aa2d622d4702af18c30af38b16"
     },
-    "bar-graded-h2.svg": {
+    "include/bar-graded-h2.svg": {
       "checksum": "e04c0e17100ea6057ed45976d5d4065a"
     },
-    "bar-graded-h3.png": {
+    "include/bar-graded-h3.png": {
       "checksum": "9681fdca7d6e4334c9bb63f53e2d8964"
     },
-    "bar-graded-h3.svg": {
+    "include/bar-graded-h3.svg": {
       "checksum": "0e9d22a4ca7d58ba252e991550802fef"
+    },
+    "include/styles.css": {
+      "checksum": "13b207cb1fe7be4996ee9024197acf9e"
     },
     "LICENSE": {
       "checksum": "5181e9f31080af3a52e4b744a086d705"
@@ -602,19 +605,19 @@
       "checksum": "801bc591d49926d25becff30a80a8f8d"
     },
     "README.md": {
-      "checksum": "71f3fac2b52553e64a728624d2fb5b7f"
+      "checksum": "32869fcd56ad6192eb3a7e537280c9c4"
     },
     "README.Rmd": {
-      "checksum": "9507c9a529c284370423d919c5f2d1f1"
-    },
-    "styles.css": {
-      "checksum": "13b207cb1fe7be4996ee9024197acf9e"
+      "checksum": "5f014eb9e3d7bf579c396d7669cbef06"
     },
     "sys-admin-cheatsheet.html": {
-      "checksum": "fd6b16a45c728cc9399b1bf89c057e10"
+      "checksum": "0f26a7f0ff30713f241bac9c90806c5c"
     },
     "sys-admin-cheatsheet.Rmd": {
-      "checksum": "5ebc648d50afc1021c858ff62cc77c6b"
+      "checksum": "c111f92246bb205c9ad458fc55604bfb"
+    },
+    "thumbnail.png": {
+      "checksum": "0bcf1031636af94fa50b28d4bbbebab5"
     }
   },
   "users": null
