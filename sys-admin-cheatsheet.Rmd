@@ -30,6 +30,11 @@ RStudio Package Manager admin guide | https://docs.rstudio.com/rspm/admin/
 Pro Drivers                         | https://docs.rstudio.com/pro-drivers/
 
 
+Pre-requisites:
+
+* [Supported platforms](https://rstudio.com/about/platform-support)
+* [professional product requirements](https://support.rstudio.com/hc/en-us/articles/360015177453-RStudio-professional-product-requirements)
+
 ## Installing R
 
 ### Install R from pre-compiled binaries
