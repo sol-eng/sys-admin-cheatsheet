@@ -171,6 +171,8 @@ Admin guide: https://docs.rstudio.com/rspm/admin/
 sudo systemctl status rstudio-pm
 ```
 
+### The rspm command
+
 Try running the `rspm` command on the server instance where RSPM is installed:
 
 ```sh
@@ -184,8 +186,7 @@ To save keystrokes when typing RSPM commands, create a command alias for the
 echo "alias rspm='/opt/rstudio-pm/bin/rspm'" >> ~/.bashrc
 ```
 
-If you run the `rspm` command with no arguments, then you'll see a list of
-available commands:
+Run the `rspm` command with no arguments for a list of available commands:
 
 ```sh
 $ rspm
@@ -423,7 +424,7 @@ Check connections to any external authentication providers
 
 ## General Linux tips 
 
-### OS version
+### Operating system version
 
 What OS are you using?
 
@@ -442,6 +443,16 @@ uname -a
 ```sh
 export PATH=$PATH:/opt/R/3.5.0/bin
 ```
+
+### Persist changes on startup in .bashrc
+
+You can run scripts and define variables on startup by adding lines to your `.bashrc` file:
+
+
+```sh
+echo "alias rspm='/opt/rstudio-pm/bin/rspm'" >> ~/.bashrc
+```
+
 
 
 
