@@ -1,7 +1,6 @@
 ---
 title: "RStudio Team System Admin :: <b>CHEATSHEET</b>"
-author: "Andrie de Vries"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 output:
   html_document:
     toc: true
@@ -14,7 +13,9 @@ css: include/styles.css
 
 <!-- ribbon from https://codepo8.github.io/css-fork-on-github-ribbon/ -->
 
-<style>#forkongithub a{background:#FCECCC;color:#000;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#DFECF7;color:#000;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:1000px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:45px;right:-45px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/sol-eng/sys-admin-cheatsheet">Fork me on GitHub</a></span>
+<span id="forkongithub">
+  <a href="https://github.com/sol-eng/sys-admin-cheatsheet">Fork me on GitHub</a>
+</span>
 
 
 ## Documentation
@@ -189,107 +190,142 @@ available commands:
 ```sh
 $ rspm
 Available Commands:
-add         Command to add packages to sources
-air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
-archive     Command to archive packages in sources
-clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
-create      Commands to create entities
-delete      Commands to delete entities
-edit        Commands to edit repo name and description
-fetch       Command to initiate eager package fetching
-help        Help about any command
-import      Command to import SSH keys
-info        Command to print information about sources and repos
-list        Commands to list entities.
-logs        Command to retrieve logs for package builds
-remove      Command to remove packages from sources
-reorder     Command to reorder repo subscriptions to sources
-rerun       Command to rerun git-builders
-run         Command to run git-builders
-subscribe   Command to subscribe repos to sources
-sync        Command to initiate an ad-hoc sync of the default cran source
-unsubscribe Command to unsubscribe repos from sources
-update      Command to update curated-cran sources
+add          Add packages to sources
+air-gap      Print help for setting up an air-gapped RStudio Package Manager service
+archive      Archive packages in sources
+clear-cran   Purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
+create       Create entities
+delete       Delete entities
+edit         Edit repo name and description
+fetch        Initiate eager package fetching
+help         Help about any command
+import       Import SSH keys
+info         Print information about sources and repos
+list         List entities.
+logs         Retrieve logs for package builds
+remove       Remove packages from sources
+reorder      Reorder repo subscriptions to sources
+rerun        Rerun git-builders
+run          Run git-builders
+subscribe    Subscribe repos to sources
+sync         Initiate an ad-hoc sync of the default cran source
+unsubscribe  Unsubscribe repos from sources
+update       Update curated-cran sources
 ```
+
 ### Working with CRAN
+
 ```sh
-sync        Command to initiate an ad-hoc sync of the default cran source
-clear-cran  Command to purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
+sync         Initiate an ad-hoc sync of the default cran source
+clear-cran   Purge CRAN metadata. Cannot be used if any repos subscribe to CRAN.
 ```
+
 ### Manage repositories and sources
+
 ```sh
-create      Commands to create entities
-delete      Commands to delete entities
-list        Commands to list entities
-update      Command to update curated-cran sources
+create       Create entities
+delete       Delete entities
+list         List entities
+update       Update curated-cran sources
 ```
+
 ### Manage packages
+
 ```sh
-add         Command to add packages to sources
-archive     Command to archive packages in sources
-remove      Command to remove packages from sources
+add          Add packages to sources
+archive      Archive packages in sources
+remove       Remove packages from sources
 ```
+
 ### Working with repositories
+
 ```sh
-edit        Commands to edit repo name and description
-reorder     Command to reorder repo subscriptions to sources
-subscribe   Command to subscribe repos to sources
-unsubscribe Command to unsubscribe repos from sources
+edit         Edit repo name and description
+reorder      Reorder repo subscriptions to sources
+subscribe    Subscribe repos to sources
+unsubscribe  Unsubscribe repos from sources
 ```
+
 ### Utilities
+
 ```sh
-air-gap     Command to print help for setting up an air-gapped RStudio Package Manager service
-fetch       Command to initiate eager package fetching
-help        Help about any command
-import      Command to import SSH keys
-info        Command to print information about sources and repos
-logs        Command to retrieve logs for package builds
+air-gap      Print help for setting up an air-gapped RStudio Package Manager service
+fetch        Initiate eager package fetching
+help         Help about any command
+import       Import SSH keys
+info         Print information about sources and repos
+logs         Retrieve logs for package builds
 ```
+
 ### System health check
+
 You have various methods to check the health of your RSPM instance:
+
 1. View the RSPM application logs:
-    ```sh
-    sudo cat /var/log/rstudio-pm.log
-    ```
+
+```sh
+sudo cat /var/log/rstudio-pm.log
+```
+
 2. View the RSPM access logs:
-    ```sh
-    sudo cat /var/log/rstudio-pm.access.log
-    ```
+
+```sh
+sudo cat /var/log/rstudio-pm.access.log
+```
+
 3. Check the status of your RSPM license:
-    ```sh
-    sudo /opt/rstudio-pm/bin/license-manager status
-    ```
-4. Run RSPM diagnostics:
-    ```sh
-    sudo /opt/rstudio-pm/bin/run-diagnostics
-    ```
-   View diagnostics output:
-     ```sh
-     cat rspm_diagnostics-report.txt
-     ```
-## License manager
-### View license status:
+
 ```sh
 sudo /opt/rstudio-pm/bin/license-manager status
 ```
+
+4. Run RSPM diagnostics:
+
+```sh
+sudo /opt/rstudio-pm/bin/run-diagnostics
+```
+
+5. View diagnostics output:
+
+```sh
+cat rspm_diagnostics-report.txt
+```
+
+## License manager
+
+### View license status
+
+```sh
+sudo /opt/rstudio-pm/bin/license-manager status
+```
+
 Activate license:
+
 ```sh
 sudo /opt/rstudio-pm/bin/license-manager activate LICENSE_KEY
 ```
+
 List of available commands:
+
 ```sh
 sudo /opt/rstudio-pm/bin/license-manager
 ```
+
+Supported commands: 
+
 ```sh
-Supported commands: acquire-lease, acquire-lease-verbose, activate,
-activate-offline, activate-offline-request, begin-evaluation-offline,
-...
+acquire-lease, acquire-lease-verbose, activate,
+activate-offline, activate-offline-request, 
+begin-evaluation-offline, ...
 ```
+
 ### Expired license
-- Things to try:
-  - Check time and time zone  `timedatectl`
-  - Resync if needed, e.g. `sudo hwclock -w`
-  - Restart
+
+Things to try:
+
+- Check time and time zone  `timedatectl`
+- Resync if needed, e.g. `sudo hwclock -w`
+- Restart
 
 ### Deactivating a license
     
