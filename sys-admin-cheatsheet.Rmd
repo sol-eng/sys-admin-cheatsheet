@@ -17,6 +17,9 @@ css: include/styles.css
   <a href="https://github.com/sol-eng/sys-admin-cheatsheet">Fork me on GitHub</a>
 </span>
 
+<!-- Include iframeResizer library (https://github.com/davidjbradshaw/iframe-resizer) -->
+<script src=https://rstudio-cdn.s3.amazonaws.com/pro-admin/iframeResizer/iframeResizer.contentWindow.min.js></script>
+
 
 ## Documentation
 
