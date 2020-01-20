@@ -434,7 +434,7 @@ Check connections to any external authentication providers
 What OS are you using?
 
 ```sh
-cat /etc/*-release
+lsb_release -a
 ```
 
 or
