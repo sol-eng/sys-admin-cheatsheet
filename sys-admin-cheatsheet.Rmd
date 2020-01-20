@@ -52,7 +52,6 @@ https://docs.rstudio.com/resources/install-r/
 For example, on Ubuntu 18.04 for R version 3.6.1.
 
 ```sh
-sudo sed -i.bak "/^#.*deb-src.*universe$/s/^# //g" /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install gdebi-core
 
